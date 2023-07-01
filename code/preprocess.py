@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-
+import lightgbm as lgb
+from utils import *
 
 def get_return(df, time, name):
     dff = df.copy()
@@ -93,3 +94,131 @@ def check_cor(df, rangee, delta, time_lst, target_feature):
     df_corr["absolute_corr"] = df_corr["median_corr"].apply(abs)
     df_corr = df_corr.sort_values("absolute_corr", ascending=False)
     return df_corr
+
+
+
+def check_featureImportant_slow(df, rangee, delta, time_lst, target_feature):
+    blockPrint()
+    models = []
+    t = 0
+    for i in range(rangee, len(time_lst), delta):
+        t+=1
+        tmp_train_df = df[(df.OPEN_TIME >= time_lst[i-rangee])&(df.OPEN_TIME < time_lst[i-delta])]
+        x_trainn = tmp_train_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+        y_trainn = tmp_train_df[f"{target_feature}"]
+
+        tmp_valid_df = df[(df.OPEN_TIME >= time_lst[i-delta])&(df.OPEN_TIME < time_lst[i])]
+        x_validd = tmp_valid_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+        y_validd = tmp_valid_df[f"{target_feature}"]
+
+        train_data = lgb.Dataset(x_trainn, label=pd.DataFrame(y_trainn), params={'verbose': -1})
+        valid_data = lgb.Dataset(pd.DataFrame(x_validd), label=pd.DataFrame(y_validd), params={'verbose': -1}, reference=train_data)
+
+        """
+        optimizable
+        """
+
+        param = { 
+            'boosting_type': 'goss',
+            'max_depth': 4,
+            'num_leaves': 15,
+            'learning_rate': 0.08,
+            'objective': "regression",
+            'early_stopping_rounds': 64,
+            'metric': 'mse',
+            'num_boost_round': 100,
+            'num_iterations': 256
+        #     'bagging_fraction': 0.8
+        }
+        if  t == 1:
+            model = lgb.train(
+                param,
+                train_data,
+                valid_sets=[train_data, valid_data],
+                valid_names=['train', 'valid'],
+                verbose_eval=False)
+        else:
+            model = lgb.train(
+                param,
+                train_data,
+                valid_sets=[train_data, valid_data],
+                valid_names=['train', 'valid'],
+                verbose_eval=False,
+                init_model = models[-1])
+
+        #model_predicted_scores.append([(model.predict(x_trainn)-y_trainn).abs().mean(), (model.predict(x_validd)-y_validd).abs().mean(), (model.predict(x_testt)-y_testt).abs().mean()])
+
+        models.append(model)
+
+    
+
+    feat_imp = pd.DataFrame([model.feature_name(), model.feature_importance("gain")]).T
+    feat_imp.columns=['Name', 'Feature Importance']
+    feat = feat_imp.sort_values("Feature Importance", ascending=False)
+    return feat
+
+
+def check_featureImportant_fast(df, rangee, delta, time_lst, target_feature):
+    blockPrint()
+    models = []
+    t = 0
+    for i in range(rangee, len(time_lst), delta):
+        t+=1
+        tmp_train_df = df[(df.OPEN_TIME >= time_lst[i-rangee])&(df.OPEN_TIME < time_lst[i-delta])]
+        x_trainn = tmp_train_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+        y_trainn = tmp_train_df[f"{target_feature}"]
+
+        tmp_valid_df = df[(df.OPEN_TIME >= time_lst[i-delta])&(df.OPEN_TIME < time_lst[i])]
+        x_validd = tmp_valid_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+        y_validd = tmp_valid_df[f"{target_feature}"]
+
+        train_data = lgb.Dataset(x_trainn, label=pd.DataFrame(y_trainn), params={'verbose': -1})
+        valid_data = lgb.Dataset(pd.DataFrame(x_validd), label=pd.DataFrame(y_validd), params={'verbose': -1}, reference=train_data)
+
+        """
+        optimizable
+        """
+
+        param = { 
+            'boosting_type': 'goss',
+            'max_depth': 4,
+            'num_leaves': 15,
+            'learning_rate': 0.08,
+            'objective': "regression",
+            'early_stopping_rounds': 64,
+            'metric': 'mse',
+            'num_boost_round': 100,
+            'num_iterations': 256
+        #     'bagging_fraction': 0.8
+        }
+        model = lgb.train(
+                param,
+                train_data,
+                valid_sets=[train_data, valid_data],
+                valid_names=['train', 'valid'],
+                verbose_eval=False)
+
+        #model_predicted_scores.append([(model.predict(x_trainn)-y_trainn).abs().mean(), (model.predict(x_validd)-y_validd).abs().mean(), (model.predict(x_testt)-y_testt).abs().mean()])
+
+        models.append(model)
+    important_tuple = tuple()
+    for i in models:
+        feat_imp = pd.DataFrame([i.feature_name(), i.feature_importance("gain")]).T
+        feat_imp.columns=['Name', 'Feature Importance']
+        feat = feat_imp.sort_values("Name", ascending=False)
+        array_important = feat['Feature Importance'].values
+        important_tuple+= (array_important,)
+
+    stacked_array = np.vstack(important_tuple)
+
+    # Calculate the median array
+    median_array = np.median(stacked_array, axis=0)
+    df_importancee = pd.DataFrame(feat).reset_index()
+    df_importancee.drop("Feature Importance", axis=1)
+    df_importancee["median_importance"] = median_array.flatten()
+    # df_importancee["absolute_corr"] = df_importancee["median_corr"].apply(abs)
+    df_importancee = df_importancee.sort_values("median_importance", ascending=False)
+
+
+
+    return df_importancee,important_tuple
