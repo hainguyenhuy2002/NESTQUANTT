@@ -1,0 +1,547 @@
+/bin/sh: 1: /usr/bin/python3/home/ubuntu/nestquant/market_test/main/main.py: not found
+/bin/sh: 1: /usr/bin/python3/home/ubuntu/nestquant/market_test/main/main.py: not found
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+current hours: 11
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+....
+Sucessful trained
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Time to predict and submit my result hehe 🥲 🥲
+[0.42898199]
+1690081200000
+      OPEN_TIME  PREDICTION
+0  1.690088e+12    0.428982
+[{'OPEN_TIME': 1690088400000.0, 'PREDICTION': 0.4289819879302823}]
+<Response [200]>
+Submission time: 1690086129177
+-----------------------------------------------------------------------------------------------------------------------------------------------
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/engine.py:177: UserWarning: Found `num_boost_round` in params. Will use it instead of argument
+  _log_warning(f"Found `{alias}` in params. Will use it instead of argument")
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/engine.py:177: UserWarning: Found `num_iterations` in params. Will use it instead of argument
+  _log_warning(f"Found `{alias}` in params. Will use it instead of argument")
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/engine.py:239: UserWarning: 'verbose_eval' argument is deprecated and will be removed in a future release of LightGBM. Pass 'log_evaluation()' callback via 'callbacks' argument instead.
+  _log_warning("'verbose_eval' argument is deprecated and will be removed in a future release of LightGBM. "
+current hours: 12
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+[LightGBM] [Warning] Auto-choosing col-wise multi-threading, the overhead of testing was 0.001074 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 11490
+[LightGBM] [Info] Number of data points in the train set: 960, number of used features: 79
+[LightGBM] [Info] Using GOSS
+[LightGBM] [Info] Start training from score 0.421021
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+[LightGBM] [Warning] No further splits with positive gain, best gain: -inf
+....
+Sucessful trained
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Time to predict and submit my result hehe 🥲 🥲
+[0.4229671]
+1690084800000
+      OPEN_TIME  PREDICTION
+0  1.690092e+12    0.422967
+[{'OPEN_TIME': 1690092000000.0, 'PREDICTION': 0.4229670963829552}]
+<Response [200]>
+Submission time: 1690089994636
+-----------------------------------------------------------------------------------------------------------------------------------------------
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+[LightGBM] [Fatal] The number of features in data (72) is not the same as it was in training data (79).
+You can set ``predict_disable_shape_check=true`` to discard this error, but please be aware what you are doing.
+current hours: 13
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+....
+Sucessful trained
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Time to predict and submit my result hehe 🥲 🥲
+Traceback (most recent call last):
+  File "/home/ubuntu/nestquant/market_test/main/main.py", line 123, in <module>
+    submit = get_predict(model, data)
+  File "/home/ubuntu/nestquant/market_test/main/../training/predict.py", line 9, in get_predict
+    pred=model.predict(df_test)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 3538, in predict
+    return predictor.predict(data, start_iteration, num_iteration,
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 863, in predict
+    preds, nrow = self.__pred_for_csr(csr, start_iteration, num_iteration, predict_type)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 1077, in __pred_for_csr
+    return inner_predict(csr, start_iteration, num_iteration, predict_type)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 1003, in inner_predict
+    _safe_call(_LIB.LGBM_BoosterPredictForCSR(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 125, in _safe_call
+    raise LightGBMError(_LIB.LGBM_GetLastError().decode('utf-8'))
+lightgbm.basic.LightGBMError: The number of features in data (72) is not the same as it was in training data (79).
+You can set ``predict_disable_shape_check=true`` to discard this error, but please be aware what you are doing.
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+[LightGBM] [Fatal] The number of features in data (72) is not the same as it was in training data (79).
+You can set ``predict_disable_shape_check=true`` to discard this error, but please be aware what you are doing.
+current hours: 14
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+Time to predict and submit my result hehe 🥲 🥲
+Traceback (most recent call last):
+  File "/home/ubuntu/nestquant/market_test/main/main.py", line 126, in <module>
+    submit = get_predict(model, data)
+  File "/home/ubuntu/nestquant/market_test/main/../training/predict.py", line 9, in get_predict
+    pred=model.predict(df_test)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 3538, in predict
+    return predictor.predict(data, start_iteration, num_iteration,
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 863, in predict
+    preds, nrow = self.__pred_for_csr(csr, start_iteration, num_iteration, predict_type)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 1077, in __pred_for_csr
+    return inner_predict(csr, start_iteration, num_iteration, predict_type)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 1003, in inner_predict
+    _safe_call(_LIB.LGBM_BoosterPredictForCSR(
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py", line 125, in _safe_call
+    raise LightGBMError(_LIB.LGBM_GetLastError().decode('utf-8'))
+lightgbm.basic.LightGBMError: The number of features in data (72) is not the same as it was in training data (79).
+You can set ``predict_disable_shape_check=true`` to discard this error, but please be aware what you are doing.
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+successful updating data with shape of: (51861, 75)
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+Time to predict and submit my result hehe 🥲 🥲
+[0.41775765]
+1690095600000
+      OPEN_TIME  PREDICTION
+0  1.690103e+12    0.417758
+[{'OPEN_TIME': 1690102800000.0, 'PREDICTION': 0.4177576510679465}]
+<Response [200]>
+Submission time: 1690100553914
+-----------------------------------------------------------------------------------------------------------------------------------------------
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+successful updating data with shape of: (51862, 75)
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+Time to predict and submit my result hehe 🥲 🥲
+[0.41365391]
+1690099200000
+      OPEN_TIME  PREDICTION
+0  1.690106e+12    0.413654
+[{'OPEN_TIME': 1690106400000.0, 'PREDICTION': 0.41365391480949626}]
+<Response [200]>
+Submission time: 1690104152415
+-----------------------------------------------------------------------------------------------------------------------------------------------
+/home/ubuntu/.local/lib/python3.10/site-packages/lightgbm/basic.py:859: UserWarning: Converting data to scipy sparse matrix.
+  _log_warning('Converting data to scipy sparse matrix.')
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to crawlling ...
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Folder './data/Stocks/AAPL' already exists
+Folder './data/Stocks/AMZN' already exists
+Folder './data/Stocks/AVGO' already exists
+Folder './data/Stocks/BRK' already exists
+Folder './data/Stocks/GOOG' already exists
+Folder './data/Stocks/JNJ' already exists
+Folder './data/Stocks/JPM' already exists
+Folder './data/Stocks/LLY' already exists
+Folder './data/Stocks/META' already exists
+Folder './data/Stocks/MSFT' already exists
+Folder './data/Stocks/NVDA' already exists
+Folder './data/Stocks/QQQ' already exists
+Folder './data/Stocks/TSLA' already exists
+Folder './data/Stocks/UNH' already exists
+Folder './data/Stocks/V' already exists
+Folder './data/Stocks/WMT' already exists
+Folder './data/Stocks/XOM' already exists
+Folder './data/Stocks/SPY' already exists
+Folder './data/FX/C:AUDUSD' already exists
+Folder './data/FX/C:EURUSD' already exists
+Folder './data/FX/C:GBPUSD' already exists
+Folder './data/FX/C:USDJPY' already exists
+Folder './data/FX/C:XAUUSD' already exists
+Folder './data/FRED/T1YFF' already exists
+Folder './data/FRED/SOFR' already exists
+Folder './data/FRED/DCOILBRENTEU' already exists
+Folder './data/FRED/CPFF' already exists
+Folder './data/FRED/BAA10Y' already exists
+Folder './data/Crypto/BTCUSDT' already exists
+Folder './data/Label/LABEL_BTCUSDT' already exists
+sucessful crawling data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to preprocessing data
+successful updating data with shape of: (51863, 75)
+....
+Sucessful get preprocessed data
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Start to train ...
+Time to predict and submit my result hehe 🥲 🥲
+[0.42165049]
+1690102800000
+      OPEN_TIME  PREDICTION
+0  1.690110e+12     0.42165
+[{'OPEN_TIME': 1690110000000.0, 'PREDICTION': 0.42165048724569476}]
+<Response [200]>
+Submission time: 1690107742680
+-----------------------------------------------------------------------------------------------------------------------------------------------
