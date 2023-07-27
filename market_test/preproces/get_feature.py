@@ -61,7 +61,7 @@ def check_feature_important_withouRolling(dff,time_train,target_feature):
     feat = feat_imp.sort_values("Feature Importance", ascending=False)
     return feat
 
-def get_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths):    
+def get_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths, start_time,  start_time_real,end_time_real):    
     df_BTCLabel = preprocess_df(df_BTCLabel, "BTC")
     print(df_BTCLabel)
     df_SPY_clean_prep = preprocess_df(df_SPY_clean,"SPY")
@@ -72,7 +72,7 @@ def get_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths):
     df_final_notLabel = get_finalDataframe(df_SPY_clean_prep,df_BTCLabel, True)
 
     #Feature important
-    df_feat =get_feat_importance(df_final, 0)  #final important feature with BTC and SPY
+    df_feat =get_feat_importance(df_final, 0, start_time_real,end_time_real)  #final important feature with BTC and SPY
     col_lst = list(df_feat.columns)
     #col_lst.remove('LABEL_BTC')
 
@@ -86,7 +86,10 @@ def get_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths):
     for path in range(len(paths)):   
         for i in paths[path]:
             df_externals = pd.read_parquet(i).reset_index()
-            df_externals_clean = clean_data(df_externals)
+            df_externals_clean = clean_data(df_externals).reset_index()
+            df_externals_clean = df_externals_clean[(df_externals_clean["OPEN_TIME"]>= start_time)]
+            df_externals_clean = df_externals_clean.set_index("OPEN_TIME")
+
             if path == 0:
                 name = i.split('/')[-1][-6:]
                 print(name)
@@ -100,7 +103,7 @@ def get_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths):
             df_external_notLabel = get_finalDataframe(df_externals_clean_prep,df_BTCLabel, True)
 
 
-            df_feats =get_feat_importance(df_external, 0)
+            df_feats =get_feat_importance(df_external, 0, start_time_real,end_time_real)
 
             external_cols = []
             for i in df_feats.columns:
@@ -164,13 +167,16 @@ def update_whole_feature_importance(df_BTCLabel,df_SPY_clean, paths, feat_list):
     
     return df_final_notLabel
 
-def get_and_update_feature(is_updated):
+def get_and_update_feature(is_updated, range, LabelTime, delta):
+        start_time = LabelTime - ((range+1000)*3600000)
+        start_time_real = LabelTime - ((range)*3600000)
+        end_time_real = LabelTime + delta*3600000
         stocks_paths = []
         fx_paths = []
         Fred_paths = []
 
 
-        folder_path = '/home/ubuntu/data'
+        folder_path = '/kaggle/input/nq2023/data'
         subfolders = get_immediate_subfolder_paths(folder_path)
 
         for subfolder in subfolders:
@@ -188,23 +194,27 @@ def get_and_update_feature(is_updated):
         """
         BTC preprocessing
         """ 
-        df_BTC = pd.read_parquet("/home/ubuntu/data/Crypto/BTCUSDT").reset_index()
-        df_Label = pd.read_parquet("/home/ubuntu/data/Label/LABEL_BTCUSDT").reset_index()
+        df_BTC = pd.read_parquet('/kaggle/input/nq2023/data/Crypto/BTCUSDT').reset_index()
+        
+        df_Label = pd.read_parquet('/kaggle/input/nq2023/data/Label/LABEL_BTCUSDT').reset_index()
         df_BTC_clean = clean_data(df_BTC)
         df_BTCLabel = df_BTC_clean.merge(df_Label, on= "OPEN_TIME",how='left')
         df_BTCLabel = df_BTCLabel.drop(columns=["SYMBOL"])
+        df_BTCLabel = df_BTCLabel[(df_BTCLabel["OPEN_TIME"]>= start_time)]
         #df_BTCLabel = df_BTCLabel.dropna()
         df_BTCLabel = df_BTCLabel.set_index("OPEN_TIME")
         """
         SPY
         """
-        df_SPY = pd.read_parquet("/home/ubuntu/data/Stocks/SPY").reset_index()
-        df_SPY_clean = clean_data(df_SPY)
+        df_SPY = pd.read_parquet('/kaggle/input/nq2023/data/Stocks/SPY').reset_index()
+        df_SPY_clean = clean_data(df_SPY).reset_index()
+        df_SPY_clean = df_SPY_clean[(df_SPY_clean["OPEN_TIME"]>= start_time)] 
+        df_SPY_clean.set_index("OPEN_TIME")
         Fred_lst =["T1YFF","SOFR","DCOILBRENTEU","CPFF","BAA10Y"]
 
         if is_updated == False:
             paths = [fx_paths,stocks_paths]
-            df_feat, df_final_notLabel = get_whole_feature_importance(df_BTCLabel, df_SPY_clean, paths)
+            df_feat, df_final_notLabel = get_whole_feature_importance(df_BTCLabel, df_SPY_clean, paths, start_time,  start_time_real,end_time_real)
 
 
             print(Fred_lst)
@@ -223,7 +233,7 @@ def get_and_update_feature(is_updated):
                     df_final_notLabel = Label.merge(WithouLabel, on = "OPEN_TIME", how = "left")
 
 
-            time_lst = df_feat.OPEN_TIME.tolist()[-960:] #1/1/2023
+            time_lst = df_feat[(df_feat["OPEN_TIME"]>=start_time_real) & ( (df_feat["OPEN_TIME"]<= end_time_real))].OPEN_TIME.tolist() #1/1/2023
             print(time_lst)
             df_feat_importance = check_feature_important_withouRolling(df_feat, time_lst, 'LABEL_BTC')
             feat = df_feat_importance[df_feat_importance["Feature Importance"]> 0]
@@ -233,7 +243,7 @@ def get_and_update_feature(is_updated):
             df_final_notLabel = df_final_notLabel[name_feat]
 
 
-            df_final_notLabel.to_csv("/home/ubuntu/nestquant/market_test/realtimeData/realtime_features.csv")
+            df_final_notLabel.to_csv('/kaggle/working/realtime_feature.csv')
             print("sucessful_save")
 
         if is_updated == True:
