@@ -50,32 +50,4 @@ def calculate_mean(list_of_dicts, key):
     return statistics.mean(values)
 
 
-def get_score(trial):
-    rangee = trial.suggest_int('rangee', 600, 1000, 20) 
-    num_boost_round = trial.suggest_int('num_boost_round', 80, 150, 10) 
-    model = train(rangee,num_boost_round)
 
-
-    s = Submission(api_key='svx8ZNYrgMNyuithrHdnLEAkn7OzlBKp8h5rzy2e')
-    data_set = submit.to_dict('records')
-    timestamp = s.submit(True, data=data_set, symbol='BTC')
-    #all_rec = s.get_submission_time(is_backtest=True, symbol='BTC')['BTCUSDT']
-    results = s.get_result(is_backtest=True, submission_time=int(timestamp), symbol='BTC')
-    s.delete_record(is_backtest=True, submission_time=int(timestamp), symbol='BTC')
-
-    with open("/kaggle/working/model_{}.pickle".format(trial.number), "wb") as fout:
-        pickle.dump(model, fout)
-    
-    submit.to_csv(f"/kaggle/working/submit_{trial.number}.csv")
-    
-    Movement_score = "MOVEMENT_SCORE"
-    mean_movement = calculate_mean(results['Movement Score'], Movement_score)
-
-    Correlation_score = "CORRELATION"
-    mean_correlation = calculate_mean(results['Correlation'], Correlation_score)
-
-    trueContribution_score = "TRUE_CONTRIBUTION"
-    mean_trueContribution = calculate_mean(results['True Contribution'], trueContribution_score)
-
-    Overall_score = (2*mean_movement + 2* mean_correlation + mean_trueContribution)/5
-    return Overall_score
