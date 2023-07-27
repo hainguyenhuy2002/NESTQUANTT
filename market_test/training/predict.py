@@ -3,14 +3,14 @@ import pickle
 import numpy as np
 from src.submit import Submission
 
-def get_predict(model, data):
-
-    df_test = data.iloc[-1].drop(["LABEL_BTC", "OPEN_TIME","Unnamed: 0"])
+def get_predict(model, data, Labeltime):
+    data_test = data[data["OPEN_TIME"] == (Labeltime+25*3600000)]
+    df_test = data_test.drop(["LABEL_BTC", "OPEN_TIME","Unnamed: 0"], axis = 1)
     pred=model.predict(df_test)
     print(pred)
     submitt=pd.DataFrame(columns=['OPEN_TIME','PREDICTION'])
-    print(data["OPEN_TIME"].iloc[-2])
-    submitt['OPEN_TIME']= np.array(data.iloc[-2]["OPEN_TIME"] + 3600000*2).flatten()
+    print(data_test["OPEN_TIME"])
+    submitt['OPEN_TIME']= np.array(data_test["OPEN_TIME"] + 3600000*2).flatten()
     submitt['PREDICTION']=pred.flatten()
     print(submitt)
     return submitt

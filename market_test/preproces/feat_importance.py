@@ -68,6 +68,50 @@ def get_finalDataframe(df_lst, df_target, is_realtime):
     return final
 
 
+# def check_feature_important_withouRolling(dff,time_train,target_feature):
+#     tmp_train_df = dff[(dff.OPEN_TIME >= time_train[1])]
+#     x_trainn = tmp_train_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+#     y_trainn = tmp_train_df[f"{target_feature}"]
+    
+    
+
+
+#     # tmp_valid_df = dff[(dff.OPEN_TIME >= time_train[i + 26])&(dff.OPEN_TIME < time_train[i +26+delta])]
+#     # x_validd = tmp_valid_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
+#     # y_validd = tmp_valid_df[f"{target_feature}"]
+    
+
+#     train_data = lgb.Dataset(x_trainn, label=pd.DataFrame(y_trainn), params={'verbose': -1})
+#     #valid_data = lgb.Dataset(pd.DataFrame(x_validd), label=pd.DataFrame(y_validd), params={'verbose': -1}, reference=train_data)
+
+    
+
+#     """
+#     optimizable
+#     """
+
+#     param = { 
+#         'boosting_type': 'goss',
+#         'max_depth': 4,
+#         'num_leaves': 15,
+#         'learning_rate': 0.08,
+#         'objective': "regression",
+#         'metric': 'mse',
+#         'num_boost_round': 100,
+#         'num_iterations': 128,
+#     #     'bagging_fraction': 0.8
+#     }
+
+#     model = lgb.train(
+#     param,
+#     train_data, 
+#     verbose_eval=False)
+    
+#     feat_imp = pd.DataFrame([model.feature_name(), model.feature_importance("gain")]).T
+#     feat_imp.columns=['Name', 'Feature Importance']
+#     feat = feat_imp.sort_values("Feature Importance", ascending=False)
+#     return feat
+
 def check_feature_important_withouRolling(dff,time_train,target_feature):
     tmp_train_df = dff[(dff.OPEN_TIME >= time_train[1])]
     x_trainn = tmp_train_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
@@ -79,6 +123,8 @@ def check_feature_important_withouRolling(dff,time_train,target_feature):
     # tmp_valid_df = dff[(dff.OPEN_TIME >= time_train[i + 26])&(dff.OPEN_TIME < time_train[i +26+delta])]
     # x_validd = tmp_valid_df.drop([f'{target_feature}','OPEN_TIME'],axis=1)
     # y_validd = tmp_valid_df[f"{target_feature}"]
+    
+    
     
 
     train_data = lgb.Dataset(x_trainn, label=pd.DataFrame(y_trainn), params={'verbose': -1})
@@ -99,14 +145,13 @@ def check_feature_important_withouRolling(dff,time_train,target_feature):
         'metric': 'mse',
         'num_boost_round': 100,
         'num_iterations': 128,
+        'device':'cpu'
     #     'bagging_fraction': 0.8
     }
-
     model = lgb.train(
     param,
-    train_data, 
+    train_data,
     verbose_eval=False)
-    
     feat_imp = pd.DataFrame([model.feature_name(), model.feature_importance("gain")]).T
     feat_imp.columns=['Name', 'Feature Importance']
     feat = feat_imp.sort_values("Feature Importance", ascending=False)
@@ -115,10 +160,10 @@ def check_feature_important_withouRolling(dff,time_train,target_feature):
 
 
 
-def get_feat_importance(df_finall, feat_important_score:float):
-    df_final = df_finall.copy()
-    time_lst = df_final.OPEN_TIME.tolist()[46918:] #1/1/2023
 
+def get_feat_importance(df_finall, feat_important_score, start_time_real,end_time_real ):
+    df_final = df_finall.copy()
+    time_lst = df_finall[(df_finall["OPEN_TIME"]>=start_time_real) & ( (df_finall["OPEN_TIME"]<= end_time_real))].OPEN_TIME.tolist() 
     df_feat_importance = check_feature_important_withouRolling(df_final, time_lst, 'LABEL_BTC')
     df_feat_importance = df_feat_importance[df_feat_importance["Feature Importance"] >feat_important_score]
     final_feat =get_clean_ImportanceFeat(df_feat_importance)
